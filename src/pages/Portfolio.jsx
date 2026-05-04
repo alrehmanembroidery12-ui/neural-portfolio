@@ -34,7 +34,7 @@ const projects = [
     status: 'Live',
     statusColor: 'bg-indigo-500',
     icon: Database,
-    link: 'https://emb-mangment-system.vercel.app/'
+    link: 'https://emb-mangment-system-frontend.vercel.app/'
   }
 ];
 
