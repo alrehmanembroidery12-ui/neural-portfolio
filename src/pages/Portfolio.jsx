@@ -12,7 +12,8 @@ const projects = [
     status: 'Live',
     statusColor: 'bg-green-500',
     icon: Globe,
-    link: 'https://blissbeginnings.netlify.app/'
+    link: 'https://blissbeginnings.netlify.app/',
+    image: '/images/projects/bliss.png'
   },
   {
     id: 2,
@@ -23,7 +24,8 @@ const projects = [
     status: 'Live',
     statusColor: 'bg-green-500',
     icon: ShoppingBag,
-    link: 'https://home-decore-pink.vercel.app/index.html'
+    link: 'https://home-decore-pink.vercel.app/index.html',
+    image: '/images/projects/aura.png'
   },
   {
     id: 3,
@@ -34,7 +36,8 @@ const projects = [
     status: 'Live',
     statusColor: 'bg-indigo-500',
     icon: Database,
-    link: 'https://emb-mangment-system-frontend.vercel.app/'
+    link: 'https://emb-mangment-system-frontend.vercel.app/',
+    image: '/images/projects/embroidery.png'
   }
 ];
 
@@ -58,21 +61,35 @@ export default function Portfolio() {
       <div className="absolute top-0 right-0 w-full h-[500px] bg-indigo-900/10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#020617] to-[#020617] -z-10"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-sm mb-6">
+        <div className="mb-12 text-center md:text-left">
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-sm mb-6"
+          >
             <ShieldCheck className="w-4 h-4" />
             <span>Authorized Access</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
+          </motion.div>
+          <motion.h1 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-white"
+          >
             Neural <span className="text-gradient">Vault</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl">
+          </motion.h1>
+          <motion.p 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-400 max-w-2xl"
+          >
             Internal dashboard showcasing production-grade systems, autonomous agents, and enterprise architectures.
-          </p>
+          </motion.p>
         </div>
 
         {/* Filter System */}
-        <div className="flex flex-wrap gap-3 mb-12">
+        <div className="flex flex-wrap gap-3 mb-12 justify-center md:justify-start">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -89,57 +106,71 @@ export default function Portfolio() {
         </div>
 
         {/* Projects Grid */}
-        <motion.div layout className="grid md:grid-cols-2 gap-6">
-          <AnimatePresence>
+        <motion.div layout className="grid md:grid-cols-2 gap-8">
+          <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="glass-card p-6 md:p-8 rounded-2xl border border-white/5 hover:border-indigo-500/30 group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="glass-card p-6 md:p-10 rounded-3xl border border-white/5 hover:border-indigo-500/30 group relative overflow-hidden"
               >
-                <div className="flex justify-between items-start mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 group-hover:scale-110 transition-transform duration-300">
-                    <project.icon className="w-6 h-6 text-indigo-400" />
+                {/* Blurred Background Image */}
+                <div 
+                  className="absolute inset-0 z-0 opacity-[0.08] group-hover:opacity-20 transition-all duration-700 scale-110 group-hover:scale-100"
+                  style={{ 
+                    backgroundImage: `url(${project.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    filter: 'blur(30px)'
+                  }}
+                ></div>
+
+                {/* Card Content */}
+                <div className="relative z-10">
+                  <div className="flex justify-between items-start mb-8">
+                    <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 group-hover:border-indigo-400/50 group-hover:bg-indigo-500/20 transition-all duration-500">
+                      <project.icon className="w-7 h-7 text-indigo-400 group-hover:text-indigo-300" />
+                    </div>
+                    <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md">
+                      <span className={`w-2 h-2 rounded-full ${project.statusColor} shadow-[0_0_8px_rgba(34,197,94,0.5)] animate-pulse`}></span>
+                      <span className="text-[10px] font-black text-gray-300 tracking-widest uppercase">{project.status}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                    <span className={`w-2 h-2 rounded-full ${project.statusColor} animate-pulse`}></span>
-                    <span className="text-xs font-semibold text-gray-300 tracking-wider uppercase">{project.status}</span>
+                  
+                  <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-indigo-300 transition-colors duration-300">{project.title}</h3>
+                  <p className="text-gray-400 mb-8 line-clamp-3 leading-relaxed text-sm md:text-base">{project.desc}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {project.tech.map((t, idx) => (
+                      <span key={idx} className="text-[10px] font-black text-cyan-400 bg-cyan-950/30 px-3 py-1.5 rounded-lg border border-cyan-900/50 uppercase tracking-wider">
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                </div>
-                
-                <h3 className="text-2xl font-bold text-white mb-3">{project.title}</h3>
-                <p className="text-gray-400 mb-6 line-clamp-2">{project.desc}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tech.map((t, idx) => (
-                    <span key={idx} className="text-xs font-mono text-cyan-400 bg-cyan-950/30 px-2.5 py-1 rounded bg-opacity-50 border border-cyan-900/50">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex gap-4 pt-4 border-t border-white/10 mt-auto">
-                  <button className="flex-1 py-2.5 rounded-lg glass-panel hover:bg-white/5 transition-colors text-white font-medium border border-white/10 flex justify-center items-center gap-2 group-hover:border-indigo-500/30">
-                    <Code2 className="w-4 h-4 text-gray-400 group-hover:text-indigo-400" /> View Code
-                  </button>
-                  {project.link ? (
-                    <a 
-                      href={project.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex-1 py-2.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600 transition-all text-white font-medium border border-indigo-500/30 flex justify-center items-center gap-2 hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]"
-                    >
-                      <ExternalLink className="w-4 h-4" /> Live Demo
-                    </a>
-                  ) : (
-                    <button className="flex-1 py-2.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600 transition-all text-white font-medium border border-indigo-500/30 flex justify-center items-center gap-2 hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
-                      <ExternalLink className="w-4 h-4" /> Live Demo
+                  
+                  <div className="flex gap-4 pt-6 border-t border-white/5 mt-auto">
+                    <button className="flex-1 py-3 rounded-xl glass-panel hover:bg-white/10 transition-all text-gray-300 hover:text-white text-xs font-bold border border-white/10 flex justify-center items-center gap-2 group/btn uppercase tracking-widest">
+                      <Code2 className="w-4 h-4 text-gray-500 group-hover/btn:text-indigo-400" /> Source
                     </button>
-                  )}
+                    {project.link ? (
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex-1 py-3 rounded-xl bg-indigo-600/10 hover:bg-indigo-600 transition-all text-white text-xs font-bold border border-indigo-500/20 flex justify-center items-center gap-2 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] uppercase tracking-widest"
+                      >
+                        <ExternalLink className="w-4 h-4" /> Live Demo
+                      </a>
+                    ) : (
+                      <button className="flex-1 py-3 rounded-xl bg-indigo-600/10 hover:bg-indigo-600 transition-all text-white text-xs font-bold border border-indigo-500/20 flex justify-center items-center gap-2 hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] uppercase tracking-widest">
+                        <ExternalLink className="w-4 h-4" /> Live Demo
+                      </button>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
