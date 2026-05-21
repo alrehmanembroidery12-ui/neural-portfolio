@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Particles from './components/Particles';
+import CoreLogicBranding from './components/CoreLogicBranding';
 
 function App() {
   const location = useLocation();
@@ -26,6 +27,7 @@ function App() {
       </main>
 
       <Footer />
+      <CoreLogicBranding />
     </div>
   );
 }
