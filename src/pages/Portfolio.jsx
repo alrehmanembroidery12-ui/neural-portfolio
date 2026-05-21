@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, ExternalLink, ShieldCheck, Zap, Server, Globe, Database, Puzzle, ShoppingBag } from 'lucide-react';
+import { Code2, ExternalLink, ShieldCheck, Zap, Server, Globe, Database, Puzzle, ShoppingBag, Sparkles } from 'lucide-react';
 
 const projects = [
   {
@@ -38,10 +38,22 @@ const projects = [
     icon: Database,
     link: 'https://emb-mangment-system-frontend.vercel.app/',
     image: '/images/projects/embroidery.png'
+  },
+  {
+    id: 4,
+    title: 'Smile Clinic Luxury',
+    desc: 'A premium, studio-grade cinematic web experience inspired by Aventura Dental Arts. Optimized with high-fidelity glassmorphism, advanced GSAP interactive animations, and custom 3D bubble physics.',
+    category: 'Luxury Branding',
+    tech: ['React', 'Vite', 'GSAP', 'Lenis', 'Tailwind'],
+    status: 'Live',
+    statusColor: 'bg-green-500',
+    icon: Sparkles,
+    link: 'https://smile-clinic-iota.vercel.app/',
+    image: '/images/projects/smile.png'
   }
 ];
 
-const categories = ['All', 'Enterprise SaaS', 'Event Planning', 'E-commerce'];
+const categories = ['All', 'Enterprise SaaS', 'Event Planning', 'E-commerce', 'Luxury Branding'];
 
 export default function Portfolio() {
   const [filter, setFilter] = useState('All');
