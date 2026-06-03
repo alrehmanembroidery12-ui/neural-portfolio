@@ -50,6 +50,18 @@ const projects = [
     icon: Sparkles,
     link: 'https://smile-clinic-iota.vercel.app/',
     image: '/images/projects/smile.png'
+  },
+  {
+    id: 5,
+    title: 'AgentFlow AI | Chatbot Builder',
+    desc: 'A multi-tenant conversational AI builder that empowers e-commerce brands to deploy personalized customer support agents. Features automated lead capture, hybrid context routing, and a customizable chat widget.',
+    category: 'Enterprise SaaS',
+    tech: ['Next.js', 'React', 'Gemini API', 'Tailwind', 'Node.js'],
+    status: 'Live',
+    statusColor: 'bg-green-500',
+    icon: Puzzle,
+    link: 'https://my-multi-chat-bot.vercel.app/',
+    image: '/images/projects/agentflow.png'
   }
 ];
 
