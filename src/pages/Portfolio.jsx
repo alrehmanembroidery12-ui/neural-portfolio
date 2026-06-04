@@ -62,6 +62,18 @@ const projects = [
     icon: Puzzle,
     link: 'https://my-multi-chat-bot.vercel.app/',
     image: '/images/projects/agentflow.png'
+  },
+  {
+    id: 6,
+    title: 'ZĀRAK | Premium Apparel',
+    desc: 'A high-performance e-commerce storefront for luxury ethnic wear. Features interactive product catalogs, RAG-enabled sales chat assistants, and automated WhatsApp order-capture pipelines.',
+    category: 'E-commerce',
+    tech: ['HTML', 'CSS', 'JavaScript', 'AI Chatbot'],
+    status: 'Live',
+    statusColor: 'bg-green-500',
+    icon: ShoppingBag,
+    link: 'https://zarak-storefront.vercel.app/index.html',
+    image: '/images/projects/zarak.png'
   }
 ];
 
